@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { getStoredCart } from '../../utilities/Database';
 import useAuth from '../hooks/useAuth';
 import './Delivery.css'
 
@@ -7,6 +8,7 @@ const Delivery = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {user} = useAuth();
   const onSubmit = data => {
+      const savedCart = getStoredCart();
       console.log(data)
     };
     return (

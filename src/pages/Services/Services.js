@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom';
 const Services = () => {
     const [services, setServices] = useState([]);
     const [cart, setCart] = useState([]);
+    const [displayServices, setDisplayServices] = useState([]);
 
     useEffect( () => {
-        fetch('./products.JSON')
+        fetch('http://localhost:5000/services')
         .then(res => res.json())
         .then(data => {
-            setServices(data);
+            setServices(data.services);
+            setDisplayServices(data.services);
         });
     }, []);
     useEffect( () => {
