@@ -9,7 +9,18 @@ const Delivery = () => {
     const {user} = useAuth();
   const onSubmit = data => {
       const savedCart = getStoredCart();
-      console.log(data)
+      data.order = savedCart;
+      fetch('http://localhost:5000/orders', {
+          method:'POST',
+          headers:{
+              'content-type':'application/json'
+          },
+          body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(result => {
+          
+      })
     };
     return (
         <div className="delivery mt-5">
